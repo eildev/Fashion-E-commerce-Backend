@@ -128,9 +128,12 @@ Route::controller(ApiBlogPostController::class)->group(function () {
     Route::get('/blogPost/{id}', 'show')->name('blogPost.show');
 });
 
+
 Route::controller(ApiBlogCommentController::class)->group(function () {
     Route::get('/blogComment', 'viewAll')->name('blogComment.view');
     Route::get('/blogComment/{id}', 'show')->name('blogComment.show');
+    Route::post('/blogComments/create', 'store')->name('blogComment.store');
+    Route::get('/blogComments/get/{id}', 'userBlogGet')->name('blogComment.user.get');
 });
 
 Route::controller(ApiOrderController::class)->group(function () {
