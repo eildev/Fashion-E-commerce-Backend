@@ -154,7 +154,7 @@
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
-                <a class="btn btn-primary login">Login</a>
+                <button type="submit" class="btn btn-primary login">Login</button>
             </form>
 
         </div>

@@ -30,6 +30,7 @@ class UserDetailsService
               $userDetails->user_id = $request->user_id;
               $userDetails->full_name = $request->full_name;
               $userDetails->phone_number = $request->phone_number;
+              $userDetails->secondary_email = $request->secondary_email;
               $userDetails->address = $request->address;
               $userDetails->city = $request->district;
               $userDetails->postal_code = $request->postal_code;
@@ -56,6 +57,7 @@ class UserDetailsService
               $userDetails->session_id =$request->session_id;
               $userDetails->full_name = $request->full_name;
               $userDetails->phone_number = $request->phone_number;
+              $userDetails->secondary_email = $request->secondary_email;
               $userDetails->address = $request->address;
               $userDetails->city = $request->district;
               $userDetails->postal_code = $request->postal_code;
