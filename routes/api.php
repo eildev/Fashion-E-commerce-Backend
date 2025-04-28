@@ -21,7 +21,7 @@ use App\Http\Controllers\API\ApiProductController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ApiWishListController;
 use App\Http\Controllers\API\ApiUserManageController;
-
+use App\Http\Controllers\API\ApiVariantController;
 use Illuminate\Http\Request;
 // Open Routes
 Route::post('/register', [AuthController::class, "register"]);
@@ -89,6 +89,16 @@ Route::controller(ApiProductController::class)->group(function () {
     Route::post('/product/search', 'search');
     Route::post('/product/filter', 'filter');
 });
+
+
+Route::controller(ApiVariantController::class)->group(function () {
+    Route::get('/variant', 'viewAll');
+    Route::get('/variant/{id}', 'show')->name('variant.show');
+});
+
+
+
+
 
 Route::controller(ApiComboProductController::class)->group(function () {
     Route::get('/comboProduct', 'view')->name('comboProduct.view');
