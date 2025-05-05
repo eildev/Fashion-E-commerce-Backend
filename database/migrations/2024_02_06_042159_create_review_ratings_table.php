@@ -16,9 +16,17 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->unsignedBigInteger('product_id')->nullable();
             $table->unsignedBigInteger('order_id')->nullable();
+            $table->unsignedBigInteger('variant_id')->nullable();
+            $table->string('title')->nullable();
             $table->string('review');
             $table->integer('rating');
             $table->integer('status')->default(0);
+
+
+
+
+            $table->foreign('variant_id')->references('id')->on('variants')->onDelete('cascade');
+            
 
             $table->foreign('user_id')
                 ->references('id')

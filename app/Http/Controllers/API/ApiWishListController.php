@@ -45,7 +45,16 @@ class ApiWishListController extends Controller
     }
     public function getWishList($user_id_or_session_id){
         try {
-            $wishlist = WishList::where('user_id', $user_id_or_session_id)->OrWhere('session_id',$user_id_or_session_id)->with('wishlistProduct','variant','variant.variantImage')->get();
+            $wishlist = WishList::where('user_id', $user_id_or_session_id)
+            ->orWhere('session_id', $user_id_or_session_id)
+            ->with([
+                'wishlistProduct',
+                'variant' => function($q) {
+                    $q->withTrashed()->with('variantImage', 'productStock','reviewRating');
+                }
+            ])
+            ->get();
+            // dd($wishlist);
             return response()->json([
                 'status' => 200,
                 'wishlist' => $wishlist
@@ -65,7 +74,7 @@ class ApiWishListController extends Controller
 
             if($wishlist){
                 $wishlist->delete();
-                
+
                 return response()->json([
                     'status' => 200,
                     'message' => 'Wishlist deleted successfully'

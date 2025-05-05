@@ -241,6 +241,7 @@ class ApiOrderController extends Controller
 
     public function store(Request $request)
     {
+       
         try {
             $billingResponse = $this->billingInformationService->storeBillingInfo($request);
             $userDetailsResponse = $this->userDetailsService->storeUserDetails($request);

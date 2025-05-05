@@ -32,6 +32,8 @@ class ApiReviewController extends Controller
                 $review->product_id = $request->product_id;
                 $review->user_id = $request->user_id;
                 $review->order_id = $request->order_id;
+                $review->variant_id = $request->variant_id;
+                $review->title = $request->title;
                 $review->rating = $request->rating;
                 $review->review = $request->review;
                 $review->status = $request->status;
@@ -74,6 +76,9 @@ class ApiReviewController extends Controller
                 $review->order_id = $request->order_id;
                 $review->rating = $request->rating;
                 $review->review = $request->review;
+                $review->title = $request->title;
+               
+                $review->variant_id = $request->variant_id;
                 $review->status = $request->status;
                 $review->save();
                 if ( $review->id && $request->hasFile('images')){
@@ -130,6 +135,12 @@ class ApiReviewController extends Controller
                 'id' => $review->id,
                 'review' => $review->review,
                 'rating' => $review->rating,
+                'title' => $review->title,
+                'variant_id' => $review->variant_id,
+                'user_id' => $review->user_id,
+                'status' => $review->status,
+                'created_at' => $review->created_at,
+                'updated_at' => $review->updated_at,
                 'gallary' => $review->gallary,
                 'user' => [
                     'name' => optional($review->user)->name,
