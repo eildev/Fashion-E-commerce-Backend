@@ -18,4 +18,7 @@ class ReviewRating extends Model
     {
         return $this->belongsTo(User::class,'user_id','id');
     }
+    public function variant(){
+        return $this->belongsTo(Variant::class,'variant_id','id');
+    }
 }

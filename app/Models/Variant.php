@@ -48,4 +48,8 @@ class Variant extends Model
     {
         return $this->hasOne(VariantPromotion::class, 'variant_id', 'id');
     }
+    public function reviewRating()
+    {
+        return $this->hasMany(ReviewRating::class, 'variant_id', 'id');
+    }
 }
