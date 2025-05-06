@@ -170,26 +170,26 @@ class OrderManageController extends Controller
         $newOrders->status="approve";
         $newOrders->update();
 
-    if($newOrders->user_id){
+    // if($newOrders->user_id){
 
-       $user=UserDetails::where("user_id",$newOrders->user_id)->latest()->first();
+    //    $user=UserDetails::where("user_id",$newOrders->user_id)->latest()->first();
 
 
-       if($user->secondary_email){
+    //    if($user->secondary_email){
 
-        $orderMail = UserDetails::where("user_id",$newOrders->user_id)->latest()->first();
-        Mail::to($orderMail->secondary_email)->send(new OrderConformationMail($newOrders));
-       }else{
-        $orderMail = User::where("id",$newOrders->user_id)->latest()->first();
-        Mail::to($orderMail->email)->send(new OrderConformationMail($newOrders));
-       }
-    }
+    //     $orderMail = UserDetails::where("user_id",$newOrders->user_id)->latest()->first();
+    //     Mail::to($orderMail->secondary_email)->send(new OrderConformationMail($newOrders));
+    //    }else{
+    //     $orderMail = User::where("id",$newOrders->user_id)->latest()->first();
+    //     Mail::to($orderMail->email)->send(new OrderConformationMail($newOrders));
+    //    }
+    // }
 
-    else{
-        $orderMail = UserDetails::where("session_id",$newOrders->session_id)->latest()->first();
+    // else{
+    //     $orderMail = UserDetails::where("session_id",$newOrders->session_id)->latest()->first();
 
-        Mail::to($orderMail->secondary_email)->send(new OrderConformationMail($newOrders));
-    }
+    //     Mail::to($orderMail->secondary_email)->send(new OrderConformationMail($newOrders));
+    // }
 
 
 
