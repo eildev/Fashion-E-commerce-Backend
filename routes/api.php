@@ -94,6 +94,7 @@ Route::controller(ApiProductController::class)->group(function () {
 Route::controller(ApiVariantController::class)->group(function () {
     Route::get('/variant', 'viewAll');
     Route::get('/variant/{id}', 'show')->name('variant.show');
+    Route::post('/variant/search', 'search');
 });
 
 
